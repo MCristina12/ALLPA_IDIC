@@ -16,7 +16,7 @@ fun BottomNavigationBar(
 ){
     val items = listOf(
         BottomNavItem.Tracking,
-        BottomNavItem.Weather,
+        BottomNavItem.Learning,
         BottomNavItem.Admin,
         BottomNavItem.Perfil
     )

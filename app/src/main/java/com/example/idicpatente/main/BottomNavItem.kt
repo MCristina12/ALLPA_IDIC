@@ -12,10 +12,10 @@ sealed class BottomNavItem(
         title = "Tracking",
         icon = R.drawable.baseline_bar_chart_24
     )
-    object Weather: BottomNavItem(
-        route = "weather",
-        title = "Weather",
-        icon = R.drawable.baseline_wb_sunny_24
+    object Learning: BottomNavItem(
+        route = "learning",
+        title = "Learning",
+        icon = R.drawable.baseline_lightbulb_24
     )
     object Admin: BottomNavItem(
         route = "admin",
