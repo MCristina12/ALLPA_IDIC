@@ -9,12 +9,12 @@ sealed class BottomNavItem(
 ){
     object Tracking: BottomNavItem(
         route = "tracking",
-        title = "Tracking",
+        title = "Datos",
         icon = R.drawable.baseline_bar_chart_24
     )
     object Learning: BottomNavItem(
         route = "learning",
-        title = "Learning",
+        title = "Aprende",
         icon = R.drawable.baseline_lightbulb_24
     )
     object Admin: BottomNavItem(
