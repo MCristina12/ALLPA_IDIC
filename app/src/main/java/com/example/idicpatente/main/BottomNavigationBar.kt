@@ -7,6 +7,7 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.compose.currentBackStackEntryAsState
 
@@ -21,13 +22,13 @@ fun BottomNavigationBar(
         BottomNavItem.Perfil
     )
 
-    BottomNavigation {
+    BottomNavigation(backgroundColor = Color(0xFF045658)) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach {item ->
             BottomNavigationItem(
                 selected =  currentRoute == item.route,
-                label = { Text(text = item.title) },
+                label = { Text(text = item.title, color = Color.White) },
                 onClick = {
                           navController.navigate(item.route){
                                 launchSingleTop = true
@@ -35,7 +36,9 @@ fun BottomNavigationBar(
                           }
                 },
                 icon = { Icon(painter = painterResource(id = item.icon),
-                              contentDescription = "") })
+                              contentDescription = "",
+                            tint = Color.White
+                    ) })
 
         }
     }
