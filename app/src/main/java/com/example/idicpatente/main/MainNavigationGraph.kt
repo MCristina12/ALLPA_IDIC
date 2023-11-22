@@ -16,9 +16,9 @@ fun MainNavigationGraph(
     navHostController: NavHostController
 ){
     NavHost(navController = navHostController,
-            startDestination = "trackig"
+            startDestination = "tracking"
     ){
-        composable("trackig"){
+        composable("tracking"){
             TrackingScreen(navController = navHostController)
         }
         composable("weather"){
