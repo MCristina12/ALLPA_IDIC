@@ -21,19 +21,25 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import android.R.color.holo_orange_dark
+import android.content.Context
+import android.content.Intent
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.toArgb
+import androidx.core.content.ContextCompat.startActivity
+import com.example.idicpatente.LoginActivity
+import com.example.idicpatente.MainActivity
 import com.example.idicpatente.R
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginFields(
-    name:String,
-    password:String,
-    onNameChange: (String) -> Unit,
-    onPasswordChange: (String) -> Unit,
-    onLoginClick: () -> Unit,
-    onRegisterClick: () -> Unit
+
 ){
+
+
+    val name = remember { mutableStateOf("") }
+    val password = remember { mutableStateOf("") }
+
     val keyboardController = LocalSoftwareKeyboardController.current
     val context = LocalContext.current
     var passwordVisible =  { mutableStateOf(false) }
@@ -82,8 +88,8 @@ fun LoginFields(
                         imeAction = ImeAction.Done),
                     keyboardActions = KeyboardActions(
                         onDone = {keyboardController?.hide()}),
-                    value = name,
-                    onValueChange = onNameChange,
+                    value = name.value,
+                    onValueChange = {name.value = it},
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Color.Green,
                         unfocusedBorderColor = Color.Gray),
@@ -96,8 +102,8 @@ fun LoginFields(
                         imeAction = ImeAction.Done),
                     keyboardActions = KeyboardActions(
                         onDone = {keyboardController?.hide()}),
-                    value = password,
-                    onValueChange = onPasswordChange,
+                    value = password.value,
+                    onValueChange = {password.value = it},
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Color.Red,
                         unfocusedBorderColor = Color.Red),
@@ -120,7 +126,8 @@ fun LoginFields(
                 Text(
                     text = "Olvidaste tu contraseña?",
                     modifier = Modifier.clickable {
-                        onRegisterClick()
+                        val intent = Intent(context, MainActivity::class.java)
+                        context.startActivity(intent)
                     }
                 )
             }
@@ -143,7 +150,8 @@ fun LoginFields(
                                 .padding(horizontal = 70.dp),
                     onClick = {
                         println("boton")
-                        onLoginClick()
+                        val intent = Intent(context, MainActivity::class.java)
+                        context.startActivity(intent)
                     },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Red,
@@ -155,7 +163,8 @@ fun LoginFields(
                 Text(
                     text = "Registrate",
                     modifier = Modifier.clickable {
-                        onRegisterClick()
+                        val intent = Intent(context, MainActivity::class.java)
+                        context.startActivity(intent)
                     }
                 )
             }
@@ -179,12 +188,5 @@ fun LoginFields(
 @Preview(showBackground = true)
 // fondo blanco
 fun test(){
-    LoginFields(
-        name = "",
-        password = "",
-        onNameChange = {},
-        onPasswordChange = {},
-        onLoginClick = {},
-        onRegisterClick = {}
-    )
+
 }

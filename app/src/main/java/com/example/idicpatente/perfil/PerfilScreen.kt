@@ -1,5 +1,6 @@
 package com.example.idicpatente.perfil
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -20,11 +21,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.idicpatente.LoginActivity
+import com.example.idicpatente.MainActivity
 import com.example.idicpatente.R
 import com.example.idicpatente.main.TopBar
 
@@ -32,6 +36,7 @@ import com.example.idicpatente.main.TopBar
 fun PerfilScreen(
     navController: NavController
 ){
+    val context = LocalContext.current
     Column(modifier = Modifier.fillMaxSize()) {
         TopBar(texto = "Perfil")
         Column(
@@ -140,7 +145,10 @@ fun PerfilScreen(
             }
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    val intent = Intent(context, LoginActivity::class.java)
+                    context.startActivity(intent)
+                },
                 modifier = Modifier.fillMaxWidth().padding(top = 8.dp )
 
                 ) {
