@@ -92,7 +92,7 @@ fun PerfilScreen(
                         fontWeight = FontWeight.Medium
                     )
                     Text(
-                        text = "500",
+                        text = "4",
                         fontWeight = FontWeight.Light
                     )
                 }

@@ -52,7 +52,7 @@ android {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.0")
     implementation("co.yml:ycharts:2.1.0")
-    implementation ("io.github.boguszpawlowski.composecalendar:composecalendar:1.1.1")
+    implementation("io.github.boguszpawlowski.composecalendar:composecalendar:1.1.1")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.1")

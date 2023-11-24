@@ -28,21 +28,46 @@ fun RegistroSec(){
     val datos = remember {
         mutableStateOf(
             arrayListOf(
-                listOf("Producto", "Precio", "Hectareas", "Ganancias"),
-                listOf("Papa", "0.6", "3",  "1500"),
-                listOf("Camote", "0.8", "1",  "1200")
+                listOf("Producto", "Precio", "Hectáreas", "Toneladas"),
+                listOf("Papa", "0.6", "3",  "4"),
+                listOf("Camote", "0.8", "1",  "5")
+            )
+        )
+    }
+
+    val gastos = remember {
+        mutableStateOf(
+            arrayListOf(
+                listOf("Descripción", "Gasto"),
+                listOf("Mano de obra", "1000"),
+                listOf("Fertilizante", "500")
             )
         )
     }
 
 
+
+
     Column(modifier = Modifier.padding(bottom = 16.dp, start = 8.dp, end = 8.dp)) {
-        Button(
-            onClick = { openDialog.value = true },
-            modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 16.dp)
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Ingresa los datos")
+            Button(
+                onClick = { openDialog.value = true },
+                modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 16.dp)
+            ) {
+                Text(text = "Ingresa los datos")
+            }
+
+            Button(
+                onClick = { },
+                modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 16.dp)
+            ) {
+                Text(text = "2023")
+            }
         }
+        Text(text = "Tus productos", modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 4.dp))
         Divider()
         for (fila in datos.value) {
 
@@ -80,6 +105,48 @@ fun RegistroSec(){
             }
             Divider()
         }
+
+        Text(text = "Tus gastos: ",
+            modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 4.dp)
+        )
+        Divider()
+        for (fila in gastos.value) {
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp, top = 2.dp, bottom = 2.dp),
+                verticalAlignment = Alignment.CenterVertically
+
+            ) {
+                for (celda in fila) {
+                    var weight = .3f
+                    if (celda == fila.first() || celda == fila.last()){
+                        weight = .3f
+                    }else{
+                        weight = .25f
+                    }
+
+                    Text(
+                        text = celda,
+                        modifier = Modifier
+                            .padding(start = 8.dp, end = 8.dp, bottom = 4.dp, top = 8.dp)
+                            .weight(weight),
+                        textAlign = TextAlign.Center
+                    )
+                    if (celda != fila.last()) {
+                        // La celda es la última de la fila
+                        Divider(modifier = Modifier
+                            .fillMaxHeight(.08f)//fill the max height
+                            .width(1.dp))
+                    }
+
+                }
+
+            }
+            Divider()
+        }
+
 
         if(openDialog.value){
             RegistroDatosSec(datos = datos, state = openDialog)
