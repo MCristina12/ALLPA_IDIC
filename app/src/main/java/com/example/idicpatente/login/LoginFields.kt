@@ -88,19 +88,23 @@ fun LoginFields(
                         focusedBorderColor = Color.Green,
                         unfocusedBorderColor = Color.Gray),
                     label = { Text(text = "Correo elctrónico")})
+
                 TextField(modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 50.dp, top = 0.dp, end = 50.dp, bottom = 0.dp),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Done),
                     keyboardActions = KeyboardActions(
                         onDone = {keyboardController?.hide()}),
                     value = password,
                     onValueChange = onPasswordChange,
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedBorderColor = Color.Red,
+                        unfocusedBorderColor = Color.Red),
                     label = { Text(text = "Contraseña")},
-                    visualTransformation = PasswordVisualTransformation(),
-                    color = Color.Red
-                )
+                    visualTransformation = PasswordVisualTransformation()
+                    )
+
             }
         }
         // olvido su contraseñla
