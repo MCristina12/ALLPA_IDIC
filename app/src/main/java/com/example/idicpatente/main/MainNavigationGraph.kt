@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.idicpatente.admin.AdminScreen
+import com.example.idicpatente.calendar.CalendarScreen
 import com.example.idicpatente.learning.LearningScreen
 import com.example.idicpatente.perfil.PerfilScreen
 import com.example.idicpatente.tracking.TrackingScreen
@@ -35,6 +36,9 @@ fun MainNavigationGraph(
         }
         composable("fenomeno"){
             FenomenoScreen(navController = navHostController)
+        }
+        composable("calendario"){
+            CalendarScreen(navController = navHostController)
         }
     }
 }
