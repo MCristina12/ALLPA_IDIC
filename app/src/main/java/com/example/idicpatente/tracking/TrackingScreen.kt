@@ -58,7 +58,7 @@ fun TrackingScreen(
         ProductoTopChart()
 
         Button(
-            onClick = { navController.navigate("fenomeno")},
+            onClick = { navController.navigate("weather")},
             modifier = Modifier.align(Alignment.CenterHorizontally)
                 .fillMaxWidth()
                 .padding(start = 8.dp, end = 8.dp, bottom = 12.dp , top = 12.dp),
