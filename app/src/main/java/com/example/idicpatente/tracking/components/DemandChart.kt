@@ -18,17 +18,18 @@ import co.yml.charts.ui.linechart.model.LinePlotData
 import co.yml.charts.ui.linechart.model.LineStyle
 import co.yml.charts.ui.linechart.model.SelectionHighlightPoint
 
+
 @Composable
-fun HistoricPriceChart(){
+fun DemandChart(){
     val steps = 5
     val pointsData1: List<Point> =
-        listOf(Point(0f, 8f), Point(1f, 18f), Point(2f, 0f), Point(3f, 12f), Point(4f, 2f))
+        listOf(Point(0f, 40f), Point(1f, 90f), Point(2f, 0f), Point(3f, 60f), Point(4f, 10f))
 
     val pointsData2: List<Point> =
-        listOf(Point(0f, 20f), Point(1f, 6f), Point(2f, 2f), Point(3f, 10f), Point(4f, 4f))
+        listOf(Point(0f, 20f), Point(1f, 30f), Point(2f, 10f), Point(3f, 50f), Point(4f, 20f))
 
     val pointsData3: List<Point> =
-        listOf(Point(0f, 10f), Point(1f, 10f), Point(2f, 10f), Point(3f, 4f), Point(4f, 3f))
+        listOf(Point(0f, 10f), Point(1f, 50f), Point(2f, 50f), Point(3f, 20f), Point(4f, 15f))
 
     val xAxisData = AxisData.Builder()
         .axisStepSize(100.dp)
@@ -45,7 +46,7 @@ fun HistoricPriceChart(){
         .backgroundColor(Color.Transparent)
         .labelAndAxisLinePadding(5.dp)
         .labelData { i ->
-            val yScale = 20 / steps
+            val yScale = 100 / steps
             (i * yScale).toString()
         }.axisLineColor(Color(0xffef6101))
         .axisLabelColor(Color(0xffef6101))
@@ -74,8 +75,7 @@ fun HistoricPriceChart(){
                     LineStyle(color = Color.Green),
                     IntersectionPoint(radius = 2.dp, color = Color.Green),
                     SelectionHighlightPoint(radius = 1.dp, color = Color.Green),
-                    //ShadowUnderLine(),
-                    //SelectionHighlightPopUp()
+
                 )
             ),
         ),
