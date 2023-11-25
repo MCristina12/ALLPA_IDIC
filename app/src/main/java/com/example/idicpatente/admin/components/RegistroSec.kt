@@ -25,6 +25,8 @@ import androidx.compose.ui.Alignment
 fun RegistroSec(){
     val openDialog = remember { mutableStateOf(false)  }
     val dividerOn = remember { mutableStateOf( false ) }
+    val tipoGasto = listOf("Mano de Obra", "Fertilizante", "Agua")
+
     val datos = remember {
         mutableStateOf(
             arrayListOf(
@@ -106,9 +108,23 @@ fun RegistroSec(){
             Divider()
         }
 
-        Text(text = "Tus gastos: ",
-            modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 4.dp)
-        )
+
+
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = "Tus gastos ",
+                modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 4.dp)
+            )
+
+            DropMenuGastoItem()
+        }
+
+
+
+        
         Divider()
         for (fila in gastos.value) {
 

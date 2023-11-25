@@ -35,6 +35,7 @@ fun RegistroDatosSec(
     val producto = remember { mutableStateOf("") }
     val precio = remember { mutableStateOf("") }
     val hectareas = remember { mutableStateOf("") }
+    val toneladas = remember { mutableStateOf("") }
 
     Dialog(
         onDismissRequest = { state.value = false },
@@ -116,10 +117,34 @@ fun RegistroDatosSec(
                     )
                 )
             }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(8.dp).fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "Toneladas: ",
+                    modifier = Modifier.weight(.3f)
+                )
+                TextField(
+                    value = toneladas.value,
+                    onValueChange = {toneladas.value = it},
+                    singleLine = true,
+                    modifier = Modifier.weight(.7f).border(1.dp, Color.LightGray, RoundedCornerShape(50)).background(
+                        Color.Transparent),
+                    colors = TextFieldDefaults.textFieldColors(
+                        unfocusedIndicatorColor = Color.Transparent,
+                        focusedLabelColor = Color.Transparent,
+                        focusedIndicatorColor = Color.Transparent,
+                        containerColor = Color.Transparent
+                    )
+                )
+            }
+
             Button(
                 onClick = {
-                    val ganancias = precio.value.toFloat()*hectareas.value.toFloat()*1000
-                    datos.value.add(listOf(producto.value, precio.value, hectareas.value, ganancias.toString()))
+                    datos.value.add(listOf(producto.value, precio.value, hectareas.value, toneladas.value))
                     state.value = false
                 },
                 modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp)
