@@ -1,7 +1,5 @@
 package com.example.idicpatente.admin.components
 
-import android.graphics.drawable.GradientDrawable.Orientation
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,11 +17,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 
 @Composable
 fun RegistroSec(){
     val openDialog = remember { mutableStateOf(false)  }
+
+    val openDialogGastos = remember { mutableStateOf(false)  }
     val dividerOn = remember { mutableStateOf( false ) }
     val tipoGasto = listOf("Mano de Obra", "Fertilizante", "Agua")
 
@@ -50,10 +52,14 @@ fun RegistroSec(){
 
 
 
-    Column(modifier = Modifier.padding(bottom = 16.dp, start = 8.dp, end = 8.dp)) {
+    Column(
+        modifier = Modifier
+            .padding(bottom = 12.dp, start = 8.dp, end = 8.dp)
+    ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
                 onClick = { openDialog.value = true },
@@ -62,13 +68,9 @@ fun RegistroSec(){
                 Text(text = "Ingresa los datos")
             }
 
-            Button(
-                onClick = { },
-                modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 16.dp)
-            ) {
-                Text(text = "2023")
-            }
+            DropMenuPeriodoItem()
         }
+
         Text(text = "Tus productos", modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 4.dp))
         Divider()
         for (fila in datos.value) {
@@ -109,19 +111,21 @@ fun RegistroSec(){
         }
 
 
-
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Tus gastos ",
-                modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 4.dp)
-            )
+            Button(
+                onClick = { openDialogGastos.value = true },
+                modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 16.dp)
+            ) {
+                Text(text = "Ingresa los gastos")
+            }
 
             DropMenuGastoItem()
         }
-
+        Text(text = "Tus gastos", modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 4.dp))
 
 
         
@@ -166,6 +170,9 @@ fun RegistroSec(){
 
         if(openDialog.value){
             RegistroDatosSec(datos = datos, state = openDialog)
+        }
+        if(openDialogGastos.value){
+            RegistroGastosSec(gastos = gastos, state = openDialogGastos)
         }
     }
 }
